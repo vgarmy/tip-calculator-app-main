@@ -60,7 +60,7 @@ const TipCalculator = () => {
   return (
     <div className="w-full md:h-screen flex items-center flex-col pt-[2rem] md:pt-[8rem]" role="main">
       <h1 className='mb-[2rem] md:mb-[6rem] text-4xl uppercase tracking-widest'>Spli<br/>tter</h1>
-      <div className="w-full md:w-[1110px] h-full md:h-auto flex flex-col md:flex-row bg-white rounded-3xl p-8 text-left gap-10">
+      <div className="w-full md:w-[1110px] h-full md:h-auto flex flex-col md:flex-row bg-white rounded-0 rounded-t-3xl md:rounded-3xl p-8 text-left gap-10">
         <div className="w-full md:w-1/2 p-4">
           <p className="text-sm mb-2 text-[var(--Dark-grayish-cyan)]">Bill</p>
           <div className="relative mb-8">
@@ -74,12 +74,12 @@ const TipCalculator = () => {
             />
           </div>
           <p className="text-sm mb-2 text-[var(--Dark-grayish-cyan)]">Select Tip %</p>
-          <div className="grid grid-cols-3 gap-4 text-white mb-8">
+          <div className="grid grid-cols-3 gap-4 text-[var(--Very-light-grayish-cyan)] mb-8 text-base md:text-xl">
             {[10, 20, 30, 40, 50].map((value) => (
               <button
                 key={value}
                 onClick={() => handleTipClick(value)}
-                className={`rounded-lg p-2 ${tip === value ? 'bg-[var(--Strong-cyan)]' : 'bg-[var(--Very-dark-cyan)]'}`}
+                className={`cursor-pointer rounded-lg p-2 ${tip === value ? 'bg-[var(--Strong-cyan)]' : 'bg-[var(--Very-dark-cyan)]'}`}
               >
                 {value}%
               </button>
@@ -87,7 +87,7 @@ const TipCalculator = () => {
             <input
               type="text"
               placeholder="Custom"
-              className="bg-[var(--Very-light-grayish-cyan)] text-[var(--Very-dark-cyan)] rounded-lg p-2 text-center placeholder-[var(--Very-dark-cyan)]"
+              className="cursor-pointer bg-[var(--Very-light-grayish-cyan)] text-[var(--Very-dark-cyan)] rounded-lg p-2 text-center placeholder-[var(--Very-dark-cyan)]"
               value={customTip}
               onChange={handleCustomTipChange}
             />
@@ -115,31 +115,30 @@ const TipCalculator = () => {
           <div className="flex-grow">
             <div className="flex justify-between mb-8">
               <div>
-                <p className="text-white text-sm">Tip Amount</p>
-                <p className="text-[var(--Dark-grayish-cyan)] text-xs">/ person</p>
+                <p className="text-[var(--Light-grayish-cyan)] text-xl">Tip Amount</p>
+                <p className="text-[var(--Dark-grayish-cyan)] text-base">/ person</p>
               </div>
-              <p className="text-[var(--Strong-cyan)] text-3xl">${tipPerPerson.toFixed(2)}</p>
+              <p className="text-[var(--Strong-cyan)] text-4xl">${tipPerPerson.toFixed(2)}</p>
             </div>
             <div className="flex justify-between mb-8">
               <div>
-                <p className="text-white text-sm">Total</p>
-                <p className="text-[var(--Dark-grayish-cyan)] text-xs">/ person</p>
+                <p className="text-[var(--Light-grayish-cyan)] text-xl">Total</p>
+                <p className="text-[var(--Dark-grayish-cyan)] text-base">/ person</p>
               </div>
-              <p className="text-[var(--Strong-cyan)] text-3xl">${totalPerPerson.toFixed(2)}</p>
+              <p className="text-[var(--Strong-cyan)] text-4xl">${totalPerPerson.toFixed(2)}</p>
             </div>
           </div>
 
           {/* Reset Button at the Bottom */}
           <button
             onClick={handleReset}
-            className={`w-full text-white font-bold py-3 rounded-lg uppercase transition ${
-              isResetActive ? 'bg-[var(--Strong-cyan)] hover:bg-[var(--Light-cyan)]' : 'bg-gray-400 cursor-not-allowed'
+            className={`w-full text-white font-bold py-3 rounded-md uppercase transition ${
+              isResetActive ? 'bg-[var(--Strong-cyan)] hover:bg-[var(--Light-grayish-cyan)]' : 'bg-gray-400 cursor-not-allowed'
             }`}
             disabled={!isResetActive}
           >
             Reset
           </button>
-
         </div>
       </div>
     </div>
